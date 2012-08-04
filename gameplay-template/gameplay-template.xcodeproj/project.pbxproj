@@ -310,7 +310,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "touch -cm ${SRCROOT}/res";
+			shellScript = "touch -cm \"${SRCROOT}/res\"";
 		};
 		5B61612414CCC24C0073B857 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -323,7 +323,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "touch -cm ${SRCROOT}/res";
+			shellScript = "touch -cm \"${SRCROOT}/res\"";
 		};
 		5BAF20A3152F2FCE003E2AC3 /* Copy Gameplay Resources Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -337,7 +337,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -rn GAMEPLAY_PATH/gameplay/res/shaders ${SRCROOT}/res\ncp -rf GAMEPLAY_PATH/gameplay/res/logo_powered_white.png ${SRCROOT}/res\ntouch -cm ${SRCROOT}/res";
+			shellScript = "cp -rn \"GAMEPLAY_PATH/gameplay/res/shaders\" \"${SRCROOT}/res\"\ncp -rf \"GAMEPLAY_PATH/gameplay/res/logo_powered_white.png\" \"${SRCROOT}/res\"\ntouch -cm \"${SRCROOT}/res\"";
 		};
 		5BAF20D7152F30C3003E2AC3 /* Copy Gameplay Resources - Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -351,7 +351,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -rn GAMEPLAY_PATH/gameplay/res/shaders ${SRCROOT}/res\ncp -rn GAMEPLAY_PATH/gameplay/res/logo_powered_white.png ${SRCROOT}/res\ntouch -cm ${SRCROOT}/res";
+			shellScript = "cp -rn \"GAMEPLAY_PATH/gameplay/res/shaders\" \"${SRCROOT}/res\"\ncp -rn \"GAMEPLAY_PATH/gameplay/res/logo_powered_white.png\" \"${SRCROOT}/res\"\ntouch -cm \"${SRCROOT}/res\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

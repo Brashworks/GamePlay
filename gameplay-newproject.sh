@@ -121,7 +121,7 @@ echo
 
 # Verify Path and eliminate double '//'
 projPath=`echo "$projPath" | sed 's_//_/_g'`
-if [ -e $projPath ]; then
+if [ -e "$projPath" ]; then
 	echo
 	echo "ERROR: Path '$projPath' already exists, aborting."
 	echo
@@ -144,7 +144,7 @@ gpPathAbs=`pwd`
 common_path=$projPath
 back=
 while [ "${gpPathAbs#$common_path}" = "${gpPathAbs}" ]; do
-	common_path=$(dirname $common_path)
+	common_path=$(dirname "$common_path")
 	if [ -z "$back" ]; then
 		back=".."
 	else
@@ -156,6 +156,7 @@ if [[ ${gpPathAbs} == ${common_path} ]]; then
 	gpPath=${back}
 fi
 
+echo "Created target folders."
 
 #############################################
 # Copy Microsoft Visual Studio project files
@@ -171,6 +172,7 @@ sed -i "" "s*TemplateGame*$className*g" "$projPath/$projName.vcxproj.filters"
 cp "gameplay-template/gameplay-template.vcxproj.user" "$projPath/$projName.vcxproj.user"
 sed -i "" "s*GAMEPLAY_PATH*$gpPath*g" "$projPath/$projName.vcxproj.user"
 
+echo "VS Project copied."
 
 #############################################
 # Copy Apple Xcode project files
@@ -190,6 +192,8 @@ sed -i "" "s*TEMPLATE_TITLE*$title*g" "$projPath/$projName-ios.plist"
 sed -i "" "s*TEMPLATE_UUID*$uuid*g" "$projPath/$projName-ios.plist"
 sed -i "" "s*TEMPLATE_AUTHOR*$author*g" "$projPath/$projName-ios.plist"
 
+echo "XCode Project copied."
+
 #############################################
 # Copy BlackBerry NDK project files
 #############################################
@@ -207,6 +211,8 @@ sed -i "" "s*TEMPLATE_TITLE*$title*g" "$projPath/bar-descriptor.xml"
 sed -i "" "s*TEMPLATE_UUID*$uuid*g" "$projPath/bar-descriptor.xml"
 sed -i "" "s*TEMPLATE_AUTHOR*$author*g" "$projPath/bar-descriptor.xml"
 sed -i "" "s*TEMPLATE_DESCRIPTION*$desc*g" "$projPath/bar-descriptor.xml"
+
+echo "BB Project copied."
 
 #############################################
 # Copy Android NDK project files
@@ -236,6 +242,8 @@ cp "gameplay-template/android/res/values/template.strings.xml" "$projPath/androi
 sed -i "" "s*TEMPLATE_TITLE*$title*g" "$projPath/android/res/values/strings.xml"
 
 
+echo "Android Project copied."
+
 #############################################
 # Copy source files
 #############################################
@@ -243,6 +251,8 @@ cp "gameplay-template/src/TemplateGame.h" "$projPath/src/$className.h"
 cp "gameplay-template/src/TemplateGame.cpp" "$projPath/src/$className.cpp"
 sed -i "" "s*TemplateGame*$className*g" "$projPath/src/$className.h"
 sed -i "" "s*TemplateGame*$className*g" "$projPath/src/$className.cpp"
+
+echo "Sources copied."
 
 # Copy resource files
 cp "gameplay-template/res/"* "$projPath/res/"
@@ -254,8 +264,9 @@ cp "gameplay-template/icon.png" "$projPath/icon.png"
 cp "gameplay-template/game.config" "$projPath/game.config"
 sed -i "" "s*TEMPLATE_TITLE*$title*g" "$projPath/game.config"
 
+echo "Opening project."
 
 # Open the new project folder
-open $projPath
+open "$projPath"
 
 exit 0
